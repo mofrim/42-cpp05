@@ -1,0 +1,7 @@
+play*/*
+ex*/*
+!ex*/*.cpp
+!ex*/*.hpp
+!ex*/*.h
+!ex*/*.sh
+!ex*/Makefile
