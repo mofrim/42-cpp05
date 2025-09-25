@@ -5,10 +5,13 @@ IndentAccessModifiers: true
 # BreakBeforeBraces: Allman
 BreakBeforeBraces: Custom
 BraceWrapping:
-  AfterFunction: false
+  AfterFunction: true
   AfterClass: false
-  SplitEmptyFunction: false
   AfterControlStatement: false
+  # AfterFunction: true
+  # AfterClass: true
+  # AfterControlStatement: Always
+  SplitEmptyFunction: false
 AllowShortFunctionsOnASingleLine: true
 TabWidth: 2
 UseTab: Never
