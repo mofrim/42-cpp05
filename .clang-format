@@ -5,13 +5,13 @@ IndentAccessModifiers: true
 # BreakBeforeBraces: Allman
 BreakBeforeBraces: Custom
 BraceWrapping:
-  AfterFunction: true
-  AfterClass: true
+  AfterFunction: false
+  AfterClass: false
   SplitEmptyFunction: false
-  AfterControlStatement: Always
+  AfterControlStatement: false
 AllowShortFunctionsOnASingleLine: true
-TabWidth:        2
-UseTab:          Never
+TabWidth: 2
+UseTab: Never
 SpaceBeforeCtorInitializerColon: false
 # BreakConstructorInitializers: BeforeComma
 BreakConstructorInitializers: AfterColon
@@ -45,4 +45,3 @@ BinPackParameters: false
 # Ensure comments don't exceed limit
 ReflowComments: true
 PenaltyExcessCharacter: 1000000
-...
