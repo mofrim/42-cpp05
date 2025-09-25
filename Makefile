@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile.default                                   :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/01 11:45:58 by fmaurer           #+#    #+#              #
-#    Updated: 2025/08/03 13:48:33 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/09/25 10:55:35 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,12 +42,22 @@ nodebug: CFLAGS += -DDEBUG=0
 nodebug:
 	$(CPP) $(CFLAGS) -o $(NAME) $(SRC)
 
+debug: CFLAGS += -g
 debug:
 	$(CPP) $(CFLAGS) -o $(NAME) $(SRC)
+
+bear: fclean
+	bear -- make
+
+run: nodebug
+	./$(NAME)
+
+run-debug: debug
+	./$(NAME)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re nodebug debug
+.PHONY: all clean fclean re nodebug debug bear run run-debug
