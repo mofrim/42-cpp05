@@ -1,54 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 10:56:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/25 14:42:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/09/26 10:09:37 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 
 #include <stdexcept>
 #include <string>
 
-class Form {
-  private:
-    static long        _noname_form_cnt;
-    const std::string  _name;
-    bool               _signed;
+class AForm
+{
+private:
+    static long _noname_form_cnt;
+    const std::string _name;
+    bool _signed;
     const unsigned int _sign_grade;
     const unsigned int _exec_grade;
 
     // making this private as we need to have it BUT there is no sense in
     // assigning Forms to eachother if they have only const attributes execept
     // the `_signed` bool.
-    Form& operator=(const Form& other);
+    AForm& operator=(const AForm& other);
 
-  public:
+    // the one thing making this class abstract
+    virtual bool _executeFormAction() const = 0;
+
+public:
     // the rest of OCF
-    Form();
-    Form(const Form& other);
-    ~Form();
+    AForm();
+    AForm(const AForm& other);
 
-    Form(const std::string& name,
-         const long&        sign_grade,
-         const long&        exec_grade);
+    //
+    virtual ~AForm();
+
+    AForm(const std::string& name, const long& sign_grade,
+          const long& exec_grade);
 
     // the exceptions
-    class GradeTooHighException: public std::logic_error {
-      public:
+    class GradeTooHighException : public std::logic_error
+    {
+    public:
         GradeTooHighException(const std::string msg);
     };
-    class GradeTooLowException: public std::logic_error {
-      public:
+    class GradeTooLowException : public std::logic_error
+    {
+    public:
         GradeTooLowException(const std::string msg);
+    };
+    class FormNotSignedException : public std::logic_error
+    {
+    public:
+        FormNotSignedException(const std::string msg);
+    };
+    class FormActionFailedException : public std::logic_error
+    {
+    public:
+        FormActionFailedException(const std::string msg);
     };
 
     void beSigned(const Bureaucrat& b);
@@ -56,10 +73,12 @@ class Form {
     // getters
     unsigned int getSignGrade() const;
     unsigned int getExecGrade() const;
-    std::string  getName() const;
-    bool         isSigned() const;
+    std::string getName() const;
+    bool isSigned() const;
+
+    bool execute(Bureaucrat const& executor) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& f);
+std::ostream& operator<<(std::ostream& os, const AForm& f);
 
 #endif

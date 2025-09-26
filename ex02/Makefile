@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/01 11:45:58 by fmaurer           #+#    #+#              #
-#    Updated: 2025/09/25 14:34:46 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/09/25 17:24:36 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@
 NAME 		= cpp05-01
 
 VPATH = .
-SRC	= main.cpp Bureaucrat.cpp Form.cpp utils.cpp
+SRC	= main.cpp Bureaucrat.cpp AForm.cpp utils.cpp ShrubberyCreationForm.cpp
 OBJDIR	= obj
 OBJS		= $(patsubst %.cpp,$(OBJDIR)/%.o,$(SRC))
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 CPP			= c++
-HDR			= Bureaucrat.hpp Form.hpp utils.hpp
+HDR			= Bureaucrat.hpp AForm.hpp utils.hpp ShrubberyCreationForm.hpp
 
 all: $(NAME)
 

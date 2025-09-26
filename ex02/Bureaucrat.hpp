@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 21:05:18 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/25 14:43:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/09/26 09:38:57 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdexcept>
 #include <string>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
   private:
@@ -50,7 +50,8 @@ class Bureaucrat {
     unsigned int       getGrade() const;
     const std::string& getName() const;
     void               setGrade(const long& grade);
-    void               signForm(Form& f) const;
+    void               signForm(AForm& f) const;
+    void               executeForm(const AForm& f) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);

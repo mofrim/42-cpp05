@@ -1,0 +1,50 @@
+---
+BasedOnStyle: LLVM
+# BasedOnStyle: Mozilla
+IndentAccessModifiers: true
+# BreakBeforeBraces: Allman
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterClass: false
+  AfterControlStatement: false
+  # AfterFunction: true
+  # AfterClass: true
+  # AfterControlStatement: Always
+  SplitEmptyFunction: false
+AllowShortFunctionsOnASingleLine: true
+TabWidth: 2
+UseTab: Never
+SpaceBeforeCtorInitializerColon: false
+# BreakConstructorInitializers: BeforeComma
+BreakConstructorInitializers: AfterColon
+ConstructorInitializerIndentWidth: 2
+SpaceBeforeInheritanceColon: false
+BreakInheritanceList: AfterColon
+ReferenceAlignment: Left
+IncludeBlocks: Regroup
+
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+
+ColumnLimit: 80
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowAllArgumentsOnNextLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakBeforeMultilineStrings: true
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+BreakStringLiterals: true
+BinPackArguments: false
+BinPackParameters: false
+# Ensure comments don't exceed limit
+ReflowComments: true
+PenaltyExcessCharacter: 1000000

@@ -6,12 +6,12 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 21:06:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/25 12:38:37 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/09/26 09:47:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 #include "utils.hpp"
 
 #include <iostream>
@@ -148,13 +148,26 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
   return (os);
 }
 
-void Bureaucrat::signForm(Form& f) const
+void Bureaucrat::signForm(AForm& f) const
 {
   try {
     f.beSigned(*this);
-  } catch (const Form::GradeTooLowException& e) {
+  } catch (const AForm::GradeTooLowException& e) {
     std::cout << this->_name << " couldn't sign " << f.getName()
               << " because his grade was too low." << std::endl;
   }
   std::cout << this->_name << " signed " << f.getName() << std::endl;
+}
+
+void Bureaucrat::executeForm(const AForm& f) const
+{
+  bool success = false;
+
+  try {
+    success = f.execute(*this);
+  } catch (const std::exception& e) {
+    std::cout << e.what() << std::endl;
+  }
+  if (success)
+    std::cout << this->_name << " executed " << f.getName() << std::endl;
 }
