@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 21:06:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/26 09:47:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/09/29 06:31:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,9 @@ void Bureaucrat::signForm(AForm& f) const
   std::cout << this->_name << " signed " << f.getName() << std::endl;
 }
 
+// looks insignificant but there is a learning to this function: rethrowing
+// exceoption! a simple `throw;` passes the exception with its original type up
+// the call stack. this is what we want here!
 void Bureaucrat::executeForm(const AForm& f) const
 {
   bool success = false;
@@ -166,7 +169,7 @@ void Bureaucrat::executeForm(const AForm& f) const
   try {
     success = f.execute(*this);
   } catch (const std::exception& e) {
-    std::cout << e.what() << std::endl;
+    throw; // rethrow!
   }
   if (success)
     std::cout << this->_name << " executed " << f.getName() << std::endl;
