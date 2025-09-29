@@ -1,65 +1,50 @@
-# this is the og LibreOffice clang-format file. only changed ColumnLimit back to
-# 80 for bettern redadability ;)
-AccessModifierOffset: -4
-ConstructorInitializerIndentWidth: 4
-AlignEscapedNewlinesLeft: false
-AlignTrailingComments: false
-AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortIfStatementsOnASingleLine: false
-AllowShortLoopsOnASingleLine: false
-AlwaysBreakTemplateDeclarations: false
-AlwaysBreakBeforeMultilin4Strings: false
-BreakBeforeBinaryOperators: true
-BreakBeforeTernaryOperators: true
-BreakConstructorInitializersBeforeComma: true
-BinPackParameters: true
-# ColumnLimit: 100
-ColumnLimit: 80
-ConstructorInitializerAllOnOneLineOrOnePerLine: false
-DerivePointerBinding: false
-ExperimentalAutoDetectBinPacking: false
-IndentCaseLabels: true
-KeepEmptyLinesAtTheStartOfBlocks: false
-MaxEmptyLinesToKeep: 1
-NamespaceIndentation: None
-FixNamespaceComments: false
-ObjCSpaceBeforeProtocolList: true
-PenaltyBreakBeforeFirstCallParameter: 19
-PenaltyBreakComment: 60
-PenaltyBreakString: 1000
-PenaltyBreakFirstLessLess: 120
-PenaltyExcessCharacter: 1000000
-PenaltyReturnTypeOnItsOwnLine: 60
-PointerBindsToType: true
-ReflowComments: false
-SpacesBeforeTrailingComments: 1
-Cpp11BracedListStyle: false
-Standard: Cpp11
-IndentWidth: 4
-TabWidth: 8
+---
+BasedOnStyle: LLVM
+# BasedOnStyle: Mozilla
+IndentAccessModifiers: true
+# BreakBeforeBraces: Allman
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterClass: false
+  AfterControlStatement: false
+  # AfterFunction: true
+  # AfterClass: true
+  # AfterControlStatement: Always
+  SplitEmptyFunction: false
+AllowShortFunctionsOnASingleLine: true
+TabWidth: 2
 UseTab: Never
-BreakBeforeBraces: Allman
-IndentFunctionDeclarationAfterType: false
-SpacesInParentheses: false
-SpacesInAngles: false
-SpaceInEmptyParentheses: false
-SpacesInCStyleCastParentheses: false
-SpaceAfterControlStatementKeyword: true
-SpaceBeforeAssignmentOperators: true
-ContinuationIndentWidth: 4
-
-# SortIncludes: false
-SortIncludes: true
-
-SortUsingDeclarations: false
-
-# my addtitions
+SpaceBeforeCtorInitializerColon: false
+# BreakConstructorInitializers: BeforeComma
+BreakConstructorInitializers: AfterColon
+ConstructorInitializerIndentWidth: 2
+SpaceBeforeInheritanceColon: false
+BreakInheritanceList: AfterColon
+ReferenceAlignment: Left
 IncludeBlocks: Regroup
+
 AlignConsecutiveDeclarations:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: false
+
 AlignConsecutiveAssignments:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: false
+
+ColumnLimit: 80
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowAllArgumentsOnNextLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakBeforeMultilineStrings: true
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+BreakStringLiterals: true
+BinPackArguments: false
+BinPackParameters: false
+# Ensure comments don't exceed limit
+ReflowComments: true
+PenaltyExcessCharacter: 1000000
