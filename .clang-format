@@ -8,17 +8,14 @@ BraceWrapping:
   AfterFunction: true
   AfterClass: false
   AfterControlStatement: false
-  # AfterFunction: true
   # AfterClass: true
   # AfterControlStatement: Always
   SplitEmptyFunction: false
 AllowShortFunctionsOnASingleLine: true
-TabWidth: 2
 UseTab: Never
 SpaceBeforeCtorInitializerColon: false
 # BreakConstructorInitializers: BeforeComma
 BreakConstructorInitializers: AfterColon
-ConstructorInitializerIndentWidth: 2
 SpaceBeforeInheritanceColon: false
 BreakInheritanceList: AfterColon
 ReferenceAlignment: Left
@@ -33,6 +30,21 @@ AlignConsecutiveAssignments:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: false
+
+## maybe one day i want this:
+# Cpp11BracedListStyle: true
+
+## align the function args to the opening bracket only using a
+## ContinuationIndentWidth from beginning of statement. dont align to the exact
+## position of the opening bracket.
+AlignAfterOpenBracket: DontAlign
+## this helps enforcing the above rule in certain situations.
+AlignOperands: DontAlign
+
+TabWidth: 2
+## nice idea: contunuation indent different from normal indent ;)
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 2
 
 ColumnLimit: 80
 AllowAllParametersOfDeclarationOnNextLine: false
