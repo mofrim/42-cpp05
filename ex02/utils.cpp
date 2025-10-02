@@ -13,6 +13,8 @@
 
 #include "utils.hpp"
 
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -46,4 +48,11 @@ std::string toString(long num)
   std::ostringstream oss;
   oss << num;
   return (oss.str());
+}
+
+// return a random integer in range [min, max] using good old c-lib funcs. use
+// current time as seed.
+int get_rand_range(int min, int max)
+{
+  return (min + rand() % (max - min + 1));
 }

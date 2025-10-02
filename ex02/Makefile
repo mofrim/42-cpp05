@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/01 11:45:58 by fmaurer           #+#    #+#              #
-#    Updated: 2025/09/25 17:24:36 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/09/29 21:59:13 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,14 @@
 NAME 		= cpp05-01
 
 VPATH = .
-SRC	= main.cpp Bureaucrat.cpp AForm.cpp utils.cpp ShrubberyCreationForm.cpp
+SRC	= main.cpp Bureaucrat.cpp AForm.cpp utils.cpp ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp
 OBJDIR	= obj
 OBJS		= $(patsubst %.cpp,$(OBJDIR)/%.o,$(SRC))
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 CPP			= c++
-HDR			= Bureaucrat.hpp AForm.hpp utils.hpp ShrubberyCreationForm.hpp
+HDR			= Bureaucrat.hpp AForm.hpp utils.hpp ShrubberyCreationForm.hpp \
+					RobotomyRequestForm.hpp
 
 all: $(NAME)
 
@@ -34,9 +36,6 @@ $(OBJDIR)/%.o: %.cpp $(HDR) | $(OBJDIR)
 
 $(NAME): $(OBJS)
 	$(CPP) $(CFLAGS) -o $@ $^
-
-clean:
-	rm -rf $(OBJDIR)
 
 nodebug: CFLAGS += -DDEBUG=0
 nodebug:
@@ -54,6 +53,10 @@ run: nodebug
 
 run-debug: debug
 	./$(NAME)
+
+clean:
+	rm -rf $(OBJDIR)
+	rm -f *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)
