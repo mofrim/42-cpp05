@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/01 11:45:58 by fmaurer           #+#    #+#              #
-#    Updated: 2025/09/25 10:55:35 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/10/08 11:37:28 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,9 +55,12 @@ run: nodebug
 run-debug: debug
 	./$(NAME)
 
+run-val: nodebug
+	valgrind -- ./$(NAME)
+
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re nodebug debug bear run run-debug
+.PHONY: all clean fclean re nodebug debug bear run run-debug run-val
