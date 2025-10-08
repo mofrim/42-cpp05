@@ -11,8 +11,6 @@ with open("data.txt", mode="r") as f:
 
 counts, bins = np.histogram(data)
 
-print(data)
-
 # changing the style of the histogram bars just to make it
 # very clear where the boundaries of the bins are:
 style = {'facecolor': 'none', 'edgecolor': 'C0', 'linewidth': 3}
