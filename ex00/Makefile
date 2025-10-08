@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/01 11:45:58 by fmaurer           #+#    #+#              #
-#    Updated: 2025/10/08 11:39:18 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/10/08 11:40:41 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,6 @@ $(OBJDIR)/%.o: %.cpp $(HDR) | $(OBJDIR)
 
 $(NAME): $(OBJS)
 	$(CPP) $(CFLAGS) -o $@ $^
-
-clean:
-	rm -rf $(OBJDIR)
 
 nodebug: CFLAGS += -DDEBUG=0
 nodebug:
