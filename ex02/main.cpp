@@ -6,11 +6,12 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:35 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/10/01 13:15:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:19:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "utils.hpp"
@@ -21,10 +22,6 @@
 
 int main()
 {
-  // TODO: investigate the randomness of rand()! do we get a uniform
-  // distribution? meaning p(w) = 1/10 for a range of [1..10]?
-  srand(time(0));
-
   print_test_section_header("ShrubberyCreationForm");
   {
     print_test_topic("execution");
@@ -81,18 +78,58 @@ int main()
 
   print_test_section_header("RobotomyRequestForm");
   {
-    Bureaucrat          killa("Killa", 23);
-    RobotomyRequestForm rrr("Homer");
+    print_test_topic("execution");
+    {
+      Bureaucrat          killa("Killa", 23);
+      RobotomyRequestForm rrr("Homer");
 
-    killa.signForm(rrr);
-    killa.executeForm(rrr);
-    killa.executeForm(rrr);
-    killa.executeForm(rrr);
-    killa.executeForm(rrr);
-    killa.executeForm(rrr);
-    killa.executeForm(rrr);
-    killa.executeForm(rrr);
-    killa.executeForm(rrr);
+      killa.signForm(rrr);
+      newline();
+      killa.executeForm(rrr);
+      newline();
+      killa.executeForm(rrr);
+      newline();
+      killa.executeForm(rrr);
+      newline();
+      killa.executeForm(rrr);
+    }
+  }
+
+  print_test_section_header("PresidentialPardonForm");
+  {
+    print_test_topic("execution");
+    {
+      Bureaucrat             b1("Friedrich", 25);
+      Bureaucrat             b2("Fritz", 5);
+      PresidentialPardonForm ppp("Marvin");
+
+      b1.signForm(ppp);
+      b2.executeForm(ppp);
+    }
+    print_test_topic("exceptions");
+    {
+
+      Bureaucrat             at0("Bob Low", 26);
+      Bureaucrat             at1("Bob High", 5);
+      PresidentialPardonForm p("Marvin");
+
+      // bob low's grade is too low
+      try {
+        p.beSigned(at0);
+      } catch (const AForm::GradeTooLowException& e) {
+        std::cout << "Err: " << e.what() << std::endl;
+      }
+
+      // bob high's grade is high enough, but the form is not yet signed.
+      try {
+        at1.executeForm(p);
+      } catch (const AForm::FormNotSignedException& e) {
+        std::cout << "Err: " << e.what() << std::endl;
+      }
+
+      p.beSigned(at1);
+      at1.executeForm(p);
+    }
   }
 
   return (0);

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 21:06:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/29 06:31:10 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:16:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ Bureaucrat::Bureaucrat():
 {
   this->_noname_bureaucrat_count++;
   dbg_msg(this->_name,
-          "Default-Constructor called with grade: " + toString(this->_grade));
+      "Default-Constructor called with grade: " + toString(this->_grade));
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other):
   _grade(other._grade), _name(other._name)
 {
   dbg_msg(this->_name,
-          "Copy-Constructor called with grade: " + toString(this->_grade));
+      "Copy-Constructor called with grade: " + toString(this->_grade));
 }
 
 // not copying _name as it is supposed to be const per subject
@@ -44,8 +44,8 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
     this->_grade = other._grade;
   }
   dbg_msg(this->_name,
-          "Copy-Assginment-Constructor called with grade: " +
-              toString(this->_grade) + " (keeping name)");
+      "Copy-Assginment-Constructor called with grade: " +
+          toString(this->_grade) + " (keeping name)");
   return (*this);
 }
 
@@ -54,11 +54,11 @@ Bureaucrat::~Bureaucrat() { dbg_msg(this->_name, "Destructor called"); }
 Bureaucrat::Bureaucrat(const std::string& name, const long& grade): _name(name)
 {
   if (grade < 1)
-    throw(Bureaucrat::GradeTooHighException("Grade too high in " + this->_name +
-                                            "'s constructor"));
+    throw(Bureaucrat::GradeTooHighException(
+        "Grade too high in " + this->_name + "'s constructor"));
   if (grade > 150)
-    throw(Bureaucrat::GradeTooLowException("Grade too low in " + this->_name +
-                                           "'s constructor"));
+    throw(Bureaucrat::GradeTooLowException(
+        "Grade too low in " + this->_name + "'s constructor"));
   this->_grade = grade;
   dbg_msg(this->_name, "Constructor called with grade: " + toString(grade));
 }
@@ -89,8 +89,8 @@ Bureaucrat Bureaucrat::operator++(int)
   Bureaucrat old(*this);
 
   if (this->_grade == 1)
-    throw(Bureaucrat::GradeTooHighException("Cannot increment " + this->_name +
-                                            "'s grade any further!"));
+    throw(Bureaucrat::GradeTooHighException(
+        "Cannot increment " + this->_name + "'s grade any further!"));
   this->_grade--;
   return (old);
 }
@@ -99,8 +99,8 @@ Bureaucrat Bureaucrat::operator++(int)
 Bureaucrat& Bureaucrat::operator++()
 {
   if (this->_grade == 1)
-    throw(Bureaucrat::GradeTooHighException("Cannot increment " + this->_name +
-                                            "'s grade any further!"));
+    throw(Bureaucrat::GradeTooHighException(
+        "Cannot increment " + this->_name + "'s grade any further!"));
   this->_grade--;
   return (*this);
 }
@@ -111,8 +111,8 @@ Bureaucrat Bureaucrat::operator--(int)
   Bureaucrat old(*this);
 
   if (this->_grade == 150)
-    throw(Bureaucrat::GradeTooLowException("Cannot decrement " + this->_name +
-                                           "'s grade any further!"));
+    throw(Bureaucrat::GradeTooLowException(
+        "Cannot decrement " + this->_name + "'s grade any further!"));
   this->_grade++;
   return (old);
 }
@@ -121,8 +121,8 @@ Bureaucrat Bureaucrat::operator--(int)
 Bureaucrat& Bureaucrat::operator--()
 {
   if (this->_grade == 150)
-    throw(Bureaucrat::GradeTooLowException("Cannot decrement " + this->_name +
-                                           "'s grade any further!"));
+    throw(Bureaucrat::GradeTooLowException(
+        "Cannot decrement " + this->_name + "'s grade any further!"));
   this->_grade++;
   return (*this);
 }
@@ -134,11 +134,11 @@ unsigned int Bureaucrat::getGrade() const { return (this->_grade); }
 void Bureaucrat::setGrade(const long& grade)
 {
   if (grade < 1)
-    throw(Bureaucrat::GradeTooHighException("setGrade: grade " +
-                                            toString(grade) + " too high!"));
+    throw(Bureaucrat::GradeTooHighException(
+        "setGrade: grade " + toString(grade) + " too high!"));
   if (grade > 150)
-    throw(Bureaucrat::GradeTooLowException("setGrade: grade " +
-                                           toString(grade) + " too low!"));
+    throw(Bureaucrat::GradeTooLowException(
+        "setGrade: grade " + toString(grade) + " too low!"));
   this->_grade = grade;
 }
 
@@ -160,7 +160,7 @@ void Bureaucrat::signForm(AForm& f) const
 }
 
 // looks insignificant but there is a learning to this function: rethrowing
-// exceoption! a simple `throw;` passes the exception with its original type up
+// exception! a simple `throw;` passes the exception with its original type up
 // the call stack. this is what we want here!
 void Bureaucrat::executeForm(const AForm& f) const
 {

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 10:57:09 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/29 20:38:50 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:17:32 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 
+// initialize class global counter for noname forms. non-sense.
 long AForm::_noname_form_cnt = 0;
 
 AForm::AForm():
@@ -46,13 +47,13 @@ AForm::AForm(const std::string& name,
   _name(name), _signed(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
   if (1 > sign_grade) {
-    throw(AForm::GradeTooHighException("Signing grade < 1 is to high."));
+    throw(AForm::GradeTooHighException("Signing grade < 1 is too high."));
   } else if (150 < sign_grade) {
-    throw(AForm::GradeTooLowException("Signing grade > 150 is to low."));
+    throw(AForm::GradeTooLowException("Signing grade > 150 is too low."));
   } else if (1 > exec_grade) {
-    throw(AForm::GradeTooHighException("Execution grade < 1 is to high."));
+    throw(AForm::GradeTooHighException("Execution grade < 1 is too high."));
   } else if (150 < exec_grade) {
-    throw(AForm::GradeTooLowException("Execution grade > 150 is to low."));
+    throw(AForm::GradeTooLowException("Execution grade > 150 is too low."));
   }
   dbg_msg(this->_name, "Direct constructor called");
 }
@@ -80,8 +81,8 @@ void AForm::beSigned(const Bureaucrat& b)
     this->_signed = true;
   else if (b.getGrade() > this->_sign_grade)
     throw(AForm::GradeTooLowException(b.getName() + "'s grade (" +
-        toString(b.getGrade()) + ") too low for this form's sign_grade (" +
-        toString(this->_sign_grade) + ")"));
+        toString(b.getGrade()) + ") too low for " + this->_name +
+        "'s sign_grade (" + toString(this->_sign_grade) + ")"));
 }
 
 unsigned int AForm::getSignGrade() const { return (this->_sign_grade); }
