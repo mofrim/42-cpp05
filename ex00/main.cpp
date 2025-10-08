@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:35 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/25 08:27:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:32:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include <iostream>
 #include <limits>
 
-int main() {
-
+int main()
+{
   print_test_section_header("constructors");
   {
     print_test_topic("default constructor");
