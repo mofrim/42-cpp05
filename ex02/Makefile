@@ -6,23 +6,23 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/01 11:45:58 by fmaurer           #+#    #+#              #
-#    Updated: 2025/09/29 21:59:13 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/10/08 07:24:52 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Simple skeleton Makefile
 
-NAME 		= cpp05-01
+NAME 		= cpp05-02
 
 VPATH = .
 SRC	= main.cpp Bureaucrat.cpp AForm.cpp utils.cpp ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp
+			RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJDIR	= obj
 OBJS		= $(patsubst %.cpp,$(OBJDIR)/%.o,$(SRC))
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 CPP			= c++
 HDR			= Bureaucrat.hpp AForm.hpp utils.hpp ShrubberyCreationForm.hpp \
-					RobotomyRequestForm.hpp
+					RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
 all: $(NAME)
 

@@ -6,11 +6,12 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:35 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/10/01 13:15:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 07:23:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "utils.hpp"
@@ -21,10 +22,6 @@
 
 int main()
 {
-  // TODO: investigate the randomness of rand()! do we get a uniform
-  // distribution? meaning p(w) = 1/10 for a range of [1..10]?
-  srand(time(0));
-
   print_test_section_header("ShrubberyCreationForm");
   {
     print_test_topic("execution");
@@ -93,6 +90,16 @@ int main()
     killa.executeForm(rrr);
     killa.executeForm(rrr);
     killa.executeForm(rrr);
+  }
+
+  print_test_section_header("PresidentialPardonForm");
+  {
+    Bureaucrat             killa("Killa", 23);
+    Bureaucrat             hanswurst("HansWurst", 5);
+    PresidentialPardonForm rrr("Homer");
+
+    killa.signForm(rrr);
+    hanswurst.executeForm(rrr);
   }
 
   return (0);
