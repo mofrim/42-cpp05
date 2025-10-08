@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 10:56:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/26 10:09:37 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:33:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@
 #include <stdexcept>
 #include <string>
 
-class AForm
-{
-private:
-    static long _noname_form_cnt;
-    const std::string _name;
-    bool _signed;
+class AForm {
+  private:
+    static long        _noname_form_cnt;
+    const std::string  _name;
+    bool               _signed;
     const unsigned int _sign_grade;
     const unsigned int _exec_grade;
 
@@ -35,7 +34,7 @@ private:
     // the one thing making this class abstract
     virtual bool _executeFormAction() const = 0;
 
-public:
+  public:
     // the rest of OCF
     AForm();
     AForm(const AForm& other);
@@ -43,28 +42,25 @@ public:
     //
     virtual ~AForm();
 
-    AForm(const std::string& name, const long& sign_grade,
-          const long& exec_grade);
+    AForm(const std::string& name,
+        const long&          sign_grade,
+        const long&          exec_grade);
 
     // the exceptions
-    class GradeTooHighException : public std::logic_error
-    {
-    public:
+    class GradeTooHighException: public std::logic_error {
+      public:
         GradeTooHighException(const std::string msg);
     };
-    class GradeTooLowException : public std::logic_error
-    {
-    public:
+    class GradeTooLowException: public std::logic_error {
+      public:
         GradeTooLowException(const std::string msg);
     };
-    class FormNotSignedException : public std::logic_error
-    {
-    public:
+    class FormNotSignedException: public std::logic_error {
+      public:
         FormNotSignedException(const std::string msg);
     };
-    class FormActionFailedException : public std::logic_error
-    {
-    public:
+    class FormActionFailedException: public std::logic_error {
+      public:
         FormActionFailedException(const std::string msg);
     };
 
@@ -73,8 +69,8 @@ public:
     // getters
     unsigned int getSignGrade() const;
     unsigned int getExecGrade() const;
-    std::string getName() const;
-    bool isSigned() const;
+    std::string  getName() const;
+    bool         isSigned() const;
 
     bool execute(Bureaucrat const& executor) const;
 };
