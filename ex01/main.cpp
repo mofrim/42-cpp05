@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:46:35 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/25 15:46:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:31:29 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 #include <iostream>
 
-int main() {
+int main()
+{
 
   print_test_section_header("basic stuff about Form class");
   {
@@ -45,25 +46,25 @@ int main() {
     {
       try {
         Form at("at", -32, 2);
-      } catch (const Form::GradeTooHighException &e) {
+      } catch (const Form::GradeTooHighException& e) {
         std::cout << "caught error: " << e.what() << std::endl;
       }
 
       try {
         Form at("at", 151, 2);
-      } catch (const Form::GradeTooLowException &e) {
+      } catch (const Form::GradeTooLowException& e) {
         std::cout << "caught error: " << e.what() << std::endl;
       }
 
       try {
         Form at("at", 2, -2);
-      } catch (const Form::GradeTooHighException &e) {
+      } catch (const Form::GradeTooHighException& e) {
         std::cout << "caught error: " << e.what() << std::endl;
       }
 
       try {
         Form at("at", 2, 200);
-      } catch (const Form::GradeTooLowException &e) {
+      } catch (const Form::GradeTooLowException& e) {
         std::cout << "caught error: " << e.what() << std::endl;
       }
     }
@@ -74,7 +75,7 @@ int main() {
     Bureaucrat a("Kalle", 41);
     Bureaucrat b("Friedrich", 42);
     Bureaucrat c("Hoinz", 43);
-    Form f("VeryImportant", 42, 2);
+    Form       f("VeryImportant", 42, 2);
     a.signForm(f);
     b.signForm(f);
     c.signForm(f);

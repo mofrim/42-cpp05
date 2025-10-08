@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 10:56:17 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/09/25 14:42:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:31:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ class Form {
     ~Form();
 
     Form(const std::string& name,
-         const long&        sign_grade,
-         const long&        exec_grade);
+        const long&         sign_grade,
+        const long&         exec_grade);
 
     // the exceptions
     class GradeTooHighException: public std::logic_error {
