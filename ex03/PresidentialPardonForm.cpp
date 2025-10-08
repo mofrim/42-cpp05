@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:57:23 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/10/08 07:21:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:26:55 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ std::string PresidentialPardonForm::getTarget() const
 
 bool PresidentialPardonForm::_executeFormAction() const
 {
-  std::cout << "* " << this->_target
-            << " has been pardoned by Zaphod Beeblebrox *" << std::endl;
+  std::cout << "* Target " + this->_target +
+          " has been pardoned by Zaphod Beeblebrox *"
+            << std::endl;
+
   return (true);
 }

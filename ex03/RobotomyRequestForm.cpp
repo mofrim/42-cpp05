@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 16:57:23 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/10/08 07:16:14 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:11:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+
+// decided to srand() in the constructor (except the copy Constructors) because
+// this is coding logically the best place i could think of. in the end it would
+// be much cleaner to use the new functions from <random>
 
 RobotomyRequestForm::RobotomyRequestForm():
   AForm("RobotomyRequestForm", 72, 45), _target("none")
@@ -65,5 +69,6 @@ bool RobotomyRequestForm::_executeFormAction() const
   else
     std::cout << "* Robotomization for target \"" << this->_target
               << "\" failed *" << std::endl;
+
   return (true);
 }
