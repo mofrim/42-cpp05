@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/01 11:45:58 by fmaurer           #+#    #+#              #
-#    Updated: 2025/10/08 09:12:16 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/10/08 12:04:25 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,16 @@
 
 NAME 		= cpp05-03
 
-VPATH = .
-SRC	= main.cpp Bureaucrat.cpp AForm.cpp utils.cpp ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
+VPATH 	= .
+SRC			= main.cpp Bureaucrat.cpp AForm.cpp utils.cpp \
+					ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
+					PresidentialPardonForm.cpp Intern.cpp
 OBJDIR	= obj
 OBJS		= $(patsubst %.cpp,$(OBJDIR)/%.o,$(SRC))
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 CPP			= c++
 HDR			= Bureaucrat.hpp AForm.hpp utils.hpp ShrubberyCreationForm.hpp \
-					RobotomyRequestForm.hpp PresidentialPardonForm.hpp Inter.hpp
+					RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.hpp
 
 all: $(NAME)
 
