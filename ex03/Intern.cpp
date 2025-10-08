@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 07:28:38 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/10/08 09:19:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/10/08 15:11:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "utils.hpp"
+
+#include <iostream>
 
 AForm *createShrubberyCreationForm(const std::string& target)
 {
@@ -76,5 +78,6 @@ AForm *Intern::makeForm(const std::string& fname,
   if (formIdx >= this->_numOfForms)
     throw Intern::InexistentFormException(
         "Form \"" + fname + "\" does not exist!");
+  std::cout << "Intern creates " << fname << std::endl;
   return (this->_formFuncs[formIdx](target));
 }
