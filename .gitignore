@@ -4,3 +4,7 @@ ex*/*
 !ex*/*.h
 !ex*/*.sh
 !ex*/Makefile
+play/srand_investigation/inv_srand
+play/srand_investigation/data.txt
+play/core
+play/constfuncpointarr
